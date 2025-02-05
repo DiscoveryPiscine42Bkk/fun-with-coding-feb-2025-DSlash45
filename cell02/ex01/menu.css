@@ -1,0 +1,84 @@
+/* ตั้งค่าพื้นฐานของหน้าเว็บ */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* กำหนดรูปแบบของเมนู */
+.menu-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ปุ่ม Drop-down */
+.dropbtn {
+    background-color: #ff6600;
+    color: white;
+    padding: 12px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.dropbtn:hover {
+    background-color: #cc5500;
+}
+
+/* กล่อง Drop-down */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+/* เนื้อหาใน Drop-down */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* ทำให้ Drop-down แสดงเมื่อโฮเวอร์ */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* ทำให้ Responsive */
+@media (max-width: 600px) {
+    .dropbtn {
+        width: 100%;
+    }
+
+    .dropdown-content {
+        width: 100%;
+        text-align: center;
+    }
+}
