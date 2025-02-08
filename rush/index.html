@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* ป้องกันการเลื่อนแนวนอน */
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ตั้งค่า background ให้เต็มหน้าจอ */
+        .hero {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: black;
+            padding: 20px;
+        }
+
+        /* ทำให้ background เบลอและเต็มจอ */
+        .hero::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: url('https://lh3.googleusercontent.com/p/AF1QipPyXw-WvvHZYC1zCTxo_LnLYk502C7kqOtvYikO=s1360-w1360-h1020') no-repeat center center / cover;
+            filter: blur(12px);
+            transform: scale(1.2);
+            z-index: -1;
+        }
+
+        /* กล่องข้อความ */
+        .hero-content {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 20px 50px;
+            border-radius: 10px;
+            backdrop-filter: blur(8px);
+        }
+
+        /* จัดตำแหน่งรูปให้สมดุล */
+        .portfolio-links {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 30px;
+            flex-wrap: wrap; /* ทำให้ responsive */
+        }
+
+        /* รูปอยู่ในกล่อง */
+        .portfolio-img-container {
+            position: relative;
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        /* ขนาดรูป */
+        .portfolio-img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        /* ตัวอักษรตรงกลางรูป */
+        .portfolio-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        /* เอฟเฟกต์เบลอเมื่อ hover */
+        .portfolio-img-container:hover .portfolio-img {
+            filter: blur(5px);
+            transform: scale(1.05);
+        }
+
+        /* ✅ Responsive Design */
+        /* ✅ ปรับขนาด Font และ Layout ให้พอดีกับหน้าจอเล็ก */
+        @media (max-width: 375px) and (max-height: 812px) {
+    .hero-content {
+        padding: 20px;
+        max-width: 85%;
+    }
+
+    .hero h1 {
+        font-size: 24px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .portfolio-links {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .portfolio-img-container {
+        width: 85%;
+        max-width: 260px;
+    }
+
+    .portfolio-text {
+        font-size: 15px;
+    }
+
+    .hero::before {
+        filter: blur(8px);
+    }
+}
+
+
+/* ✅ รองรับหน้าจอมือถือขนาดเล็กมาก (ต่ำกว่า 480px) */
+@media (max-width: 480px) {
+    .hero-content {
+        padding: 10px 15px;
+    }
+
+    .hero h1 {
+        font-size: 20px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .portfolio-img-container {
+        width: 90%;
+        max-width: 220px;
+    }
+
+    .portfolio-text {
+        font-size: 14px;
+    }
+}
+
+    /* ✅ รองรับหน้าจอขนาดใหญ่ (Desktop Widescreen) */
+   
+    @media (max-width: 375px) {
+    html, body {
+        height: 100%;
+        width: 100%;
+        overflow-y: auto; /* เปิดใช้งานการเลื่อนขึ้นลง */
+    }
+
+    .hero-content {
+        padding: 15px 20px;
+        max-width: 80%;
+    }
+
+    .hero h1 {
+        font-size: 22px; /* ลดขนาดหัวข้อให้พอดีกับหน้าจอเล็ก */
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .portfolio-links {
+        display: flex;
+        flex-direction: column; /* เรียงจากบนลงล่างตลอดเวลา */
+        align-items: center;
+        gap: 20px;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .portfolio-img-container {
+        width: 90%; /* ปรับขนาดรูปให้เต็มหน้าจอมากขึ้น */
+        max-width: 300px;
+        margin-bottom: 20px; /* เพิ่มระยะห่างระหว่างรูป */
+    }
+
+    .portfolio-text {
+        font-size: 14px; /* ลดขนาดตัวอักษรให้สมดุล */
+        padding: 6px 12px;
+        bottom: 10px; /* เลื่อนตัวอักษรลงด้านล่างของรูปภาพ */
+        position: absolute;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Our Portfolio</h1>
+            <p>Select a portfolio to view:</p>
+        </div>
+        
+        <!-- รูปภาพแทนปุ่ม -->
+        <div class="portfolio-links">
+            <a href="portfolio1.html" class="portfolio-img-container">
+                <img src="https://scontent.fbkk6-1.fna.fbcdn.net/v/t39.30808-6/457516951_3870180433304484_7497330621252099906_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeG94nO903VIp5FUDGYpFytVuonXLFLMQiW6idcsUsxCJdv1gnGg-4ncU5oL3hKVufwdC5xerKQYMy-gGIJogUZs&_nc_ohc=Z3wsxRSBtg4Q7kNvgEQC4gN&_nc_zt=23&_nc_ht=scontent.fbkk6-1.fna&_nc_gid=AWd_mPNiw8xVorX_qKky7Sk&oh=00_AYDF3BsvoK5gOxmguYKxxZ7NIuYlJKW1A3yDTZL18Hw4qw&oe=67AB9B49" alt="Portfolio 1" class="portfolio-img">
+                <div class="portfolio-text">Pphotong</div>
+            </a>
+            <a href="portfolio2.html" class="portfolio-img-container">
+                <img src="https://images-ext-1.discordapp.net/external/qJQg7ja2MODdm7JDrPxnsbjl5Bng6zEi8yaxbPcwfEQ/https/lh3.googleusercontent.com/d/13HUHhSjyC0qsXlV2cC3dBrjrtMcPRlJo?format=webp&width=1186&height=889" alt="Portfolio 2" class="portfolio-img">
+                <div class="portfolio-text">Apasitt</div>
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

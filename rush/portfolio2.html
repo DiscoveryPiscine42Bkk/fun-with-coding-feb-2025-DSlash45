@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* ทำให้ Navbar ขยายเต็มหน้าจอ */
+        .navbar {
+            width: 100vw;  /* ทำให้ Navbar ขยายเต็มความกว้างของ viewport */
+            max-width: 100%; /* ป้องกันการเกินขอบจอ */
+        }
+        /* Custom CSS */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .hero {
+            position: relative;
+            text-align: center;
+            color: black;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden; /* ป้องกันการล้นของเลเยอร์เบลอ */
+        }
+
+        /* ใช้เลเยอร์เบลอคลุมทั้ง Hero Section */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.kmitlalumni.org/wp-content/uploads/2023/01/%E0%B8%AA%E0%B8%88%E0%B8%A51.jpg') no-repeat center center / cover;
+            filter: blur(15px); /* ค่าความเบลอ */
+            transform: scale(1.1); /* ป้องกันขอบเบลอ */
+            z-index: -1; /* ให้อยู่ข้างหลังเนื้อหา */
+        }
+
+        /* หัวข้อใหญ่ขึ้นและตัวหนา */
+        .hero h1 {
+            font-size: 50px; /* ขนาดใหญ่ขึ้น */
+            font-weight: bold; /* ทำให้ตัวหนา */
+            text-transform: uppercase; /* ทำให้เป็นตัวพิมพ์ใหญ่ทั้งหมด */
+        }
+        .hero p {
+            font-size: 24px; /* ขนาดเล็กลง */
+            font-weight: normal;
+        }
+
+        /* Section 2: About Me */
+        #about {
+            background-color: #f8f9fa;
+            padding: 60px;
+            border-radius: 10px;
+        }
+
+        /* Profile Picture */
+        .profile-pic {
+            width: 300px;
+            height: 300px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 5px solid #ddd;
+        }
+
+        /* Section 3: Showcase */
+        .showcase {
+            background: url('https://media.istockphoto.com/id/1315768127/th/%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B8%96%E0%B9%88%E0%B8%B2%E0%B8%A2/%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99%E0%B8%AB%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B8%AA%E0%B8%B5%E0%B8%94%E0%B9%8D%E0%B8%B2%E0%B8%99%E0%B8%B2%E0%B8%A1%E0%B8%98%E0%B8%A3%E0%B8%A3%E0%B8%A1-%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99%E0%B8%AB%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B8%AA%E0%B8%95%E0%B8%B9%E0%B8%94%E0%B8%B4%E0%B9%82%E0%B8%AD%E0%B8%AB%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B9%84%E0%B8%A5%E0%B9%88%E0%B8%A3%E0%B8%B0%E0%B8%94%E0%B8%B1%E0%B8%9A%E0%B8%AA%E0%B8%B5%E0%B8%94%E0%B9%8D%E0%B8%B2%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A7%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B9%80%E0%B8%9B%E0%B8%A5%E0%B9%88%E0%B8%B2-%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99%E0%B8%AB%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B8%99%E0%B8%B2%E0%B8%A1%E0%B8%98%E0%B8%A3%E0%B8%A3%E0%B8%A1-%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99.jpg?b=1&s=612x612&w=0&k=20&c=D65wJ6YnWJXpKAvaJW8YGY9Sk-rq_GpIrLH4a3rOsGs=') no-repeat center center;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        /* Cards */
+        .card {
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        /* Section 4: Contact */
+        .contact {
+            background: url('https://img.pikbest.com/backgrounds/20190616/blue-horizontal-studio-gradient-wall-room--modern-interior-background-v_1406647jpg!bw700') no-repeat center center;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        /* จัดไอคอน Contact ให้มีระยะห่าง */
+        .contact-icons {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 30px;
+                    margin-top: 20px;
+                }
+
+                .contact-icons img {
+                    width: 50px;
+                    height: auto;
+                    transition: transform 0.3s ease-in-out;
+                }
+
+                .contact-icons img:hover {
+                    transform: scale(1.1);
+                }
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">My Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">🏠 Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#showcase">Showcase</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section 1: Hero -->
+    <header class="hero">
+        <h1>Welcome to My Portfolio</h1>
+        <p>🌾Agricultural Intelligence Engineering 🚜</p>
+    </header>
+
+    <!-- Section 2: About Me -->
+    <section id="about" class="container text-center my-5">
+        <h2>About Me</h2>
+        <img src="https://images-ext-1.discordapp.net/external/qJQg7ja2MODdm7JDrPxnsbjl5Bng6zEi8yaxbPcwfEQ/https/lh3.googleusercontent.com/d/13HUHhSjyC0qsXlV2cC3dBrjrtMcPRlJo?format=webp&width=1186&height=889" class="profile-pic my-3" alt="Profile Picture">
+        <p class="mt-3">Hello! My name is Atikorn Prasitthiphong. I am going to graduate with a bachelor's degree in Agricultural Intelligence Engineering from King Mongkut's Institute of Technology Ladkrabang. I have experience in agricultural machinery and IoT. Currently, I have minimal knowledge of web development but am eager to learn and improve my skills.</p>
+    </section>
+    
+    <!-- Section 3: Showcase -->
+    <section id="showcase" class="showcase">
+        <h2>My Project</h2>
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://png.pngtree.com/png-clipart/20220403/original/pngtree-thai-off-white-certificate-png-image_7494894.png" class="card-img-top" alt="Project 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Project 1</h5>
+                            <p class="card-text">A web application that helps users manage their tasks efficiently.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://png.pngtree.com/png-clipart/20220403/original/pngtree-thai-off-white-certificate-png-image_7494894.png" class="card-img-top" alt="Project 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Project 2</h5>
+                            <p class="card-text">A responsive portfolio website showcasing my skills and experience.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://png.pngtree.com/png-clipart/20220403/original/pngtree-thai-off-white-certificate-png-image_7494894.png" class="card-img-top" alt="Project 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Project 3</h5>
+                            <p class="card-text">An e-commerce site that provides seamless shopping experiences.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://png.pngtree.com/png-clipart/20220403/original/pngtree-thai-off-white-certificate-png-image_7494894.png" class="card-img-top" alt="Project 4">
+                        <div class="card-body">
+                            <h5 class="card-title">Project 4</h5>
+                            <p class="card-text">A mobile app to track daily habits and progress.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://png.pngtree.com/png-clipart/20220403/original/pngtree-thai-off-white-certificate-png-image_7494894.png" class="card-img-top" alt="Project 5">
+                        <div class="card-body">
+                            <h5 class="card-title">Project 5</h5>
+                            <p class="card-text">An AI-powered chatbot for customer support.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://png.pngtree.com/png-clipart/20220403/original/pngtree-thai-off-white-certificate-png-image_7494894.png" class="card-img-top" alt="Project 6">
+                        <div class="card-body">
+                            <h5 class="card-title">Project 6</h5>
+                            <p class="card-text">A machine learning model for image recognition.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- Section 4: Contact -->
+  <section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <p>Feel free to reach out through my social media or email.</p>
+    <div class="contact-icons">
+        <a href="https://github.com/DiscoveryPiscine42Bkk/fun-with-coding-feb-2025-ATKPooh" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg">
+        </a>
+        <a href="https://linkedin.com/" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png">
+        </a>
+        <a href="mailto:64010955.ac.th">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg">
+        </a>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white text-center py-3">
+        <p>&copy; 2025 [Aprasitt]. All Rights Reserved.</p>
+    </footer>
+
+</html>
