@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Background (jQuery)</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="background.css">
+</head>
+<body>
+    <button id="colorBtn">Click me!</button>
+    <script>
+        function getRandomColor() {
+            return '#' + Math.floor(Math.random()*16777215).toString(16);
+        }
+
+        $(document).ready(() => {
+            $('#colorBtn').click(() => {
+                $('body').css('background-color', getRandomColor());
+            });
+        });
+    </script>
+</body>
+</html>
+
+

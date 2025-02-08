@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background-color 0.3s ease;
+}
+
+#colorBtn {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    background-color: #ffffff;
+    border: 2px solid #333;
+    border-radius: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#colorBtn:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+#colorBtn:active {
+    transform: translateY(0);
+}
